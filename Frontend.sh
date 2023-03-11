@@ -1,1 +1,2 @@
-echo "i am frontend"
+#!/bin/bash
+echo "i am"
