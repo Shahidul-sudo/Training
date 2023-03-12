@@ -1,12 +1,14 @@
 #!/bin/bash
 set -e
 
-yum install nginx -y
-USER_ID=$(id -u)
-if [ "$USER_ID" -ne 0 ] ; then
+ID=$(id -u)
+if [ "$ID" -ne 0 ] ; then
    echo -e "Please execute though root user"
    exit 1
 fi
+
+yum install nginx -y
+
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
