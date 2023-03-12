@@ -3,7 +3,7 @@ set -e
 
 yum install nginx -y
 USER_ID=$(id -u)
-if ["USER_ID" -ne 0] ; then
+if ["$USER_ID" -ne 0] ; then
    echo "Please execute though root user"
    exit 1
 fi
