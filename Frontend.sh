@@ -2,6 +2,11 @@
 set -e
 
 yum install nginx -y
+USER_ID=$(id -u)
+if ["USER_ID" -ne 0] ; then
+   echo "Please execute though root user"
+   exit 1
+fi
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
