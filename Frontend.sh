@@ -1,7 +1,7 @@
 #!/bin/bash
 # set -e
-COMPONENT = frontend
-LOGFILE = " /tmp/$COMPONENT.log "
+COMPONENT= frontend
+LOGFILE= " /tmp/$COMPONENT.log "
 ID=$(id -u)
 if [ "$ID" -ne 0 ] ; then
    echo -e "Please execute though root user"
