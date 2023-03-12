@@ -6,7 +6,7 @@ if [ "$ID" -ne 0 ] ; then
    echo -e "Please execute though root user"
    exit 1
 fi
-echo -e "Installing Nginx : "
+echo -n "Installing Nginx : "
 yum install nginx -y &>> /tmp/frontend.log
 
 if [ $? -eq 0 ] ; then
