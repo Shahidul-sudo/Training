@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+# set -e
 
 ID=$(id -u)
 if [ "$ID" -ne 0 ] ; then
@@ -7,7 +7,7 @@ if [ "$ID" -ne 0 ] ; then
    exit 1
 fi
 echo -n "Installing Nginx : "
-yum install nginx -y &>> /tmp/frontend.log
+yum install nginx123 -y &>> /tmp/frontend.log
 
 if [ $? -eq 0 ] ; then
     echo -e "\e[32m Success \e[0m"
