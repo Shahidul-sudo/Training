@@ -34,7 +34,7 @@ else
     echo -e "\e[31m Failure  \e[0m"
     exit 2
 fi
-echo "Copying the downloaded frontend content : "
+echo -n "Copying the downloaded frontend content : "
 unzip /tmp/frontend.zip &>> /tmp/frontend.log
 mv frontend-main/* .
 mv static/* .
