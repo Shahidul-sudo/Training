@@ -25,7 +25,7 @@ yum install nodejs -y &>> $LOGFILE
 stat $?
 
 echo -n "Creating the application user account : "
-useradd roboshop &>> $LOGFILE
+useradd $COMPONENT &>> $LOGFILE
 stat $?
 
 echo -n "Downloading the $COMPONENT components : "
