@@ -17,14 +17,14 @@ stat(){
     fi   
 }
 echo -n  "Configuring the node js repo : "
-curl --silent --location https://rpm.nodesource.com/setup_16.x | bash -
+curl --silent --location https://rpm.nodesource.com/setup_16.x | bash - &>> $LOGFILE
 stat $?
 
-echo -n "installing node JS : "
+echo -n "Installing node JS : "
 yum install nodejs -y &>> $LOGFILE
 stat $?
 
-echo -n " creating the application user account : "
+echo -n "Creating the application user account : "
 useradd roboshop &>> $LOGFILE
 stat $?
 
@@ -35,5 +35,5 @@ stat $?
 echo -n "Extracting the $COMPONENT in the $APPUSER directory : "
 cd /home/$APPUSER
 unzip /tmp/$COMPONENT.zip &>> $LOGFILE
-
+stat $?
 
