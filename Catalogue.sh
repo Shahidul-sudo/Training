@@ -23,7 +23,7 @@ stat $?
 echo -n "Installing node JS : "
 yum install nodejs -y &>> $LOGFILE
 stat $?
-id $APPUSER
+id $APPUSER &>> $LOGFILE
 if [ $? -ne 0 ]; then
     echo -n "Creating the application user account : "
     useradd roboshop &>> $LOGFILE
@@ -36,6 +36,6 @@ stat $?
 
 echo -n "Extracting the $COMPONENT in the $APPUSER directory : "
 cd /home/$APPUSER
-unzip /tmp/$COMPONENT.zip &>> $LOGFILE
+unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat $?
 
