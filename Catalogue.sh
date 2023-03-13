@@ -23,10 +23,12 @@ stat $?
 echo -n "Installing node JS : "
 yum install nodejs -y &>> $LOGFILE
 stat $?
-
-echo -n "Creating the application user account : "
-useradd $COMPONENT &>> $LOGFILE
-stat $?
+id $APPUSER
+if [ $? -ne 0 ]; then
+    echo -n "Creating the application user account : "
+    useradd roboshop &>> $LOGFILE
+    stat $?
+fi
 
 echo -n "Downloading the $COMPONENT components : "
 curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip"
