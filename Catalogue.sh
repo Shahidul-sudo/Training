@@ -36,6 +36,12 @@ stat $?
 
 echo -n "Extracting the $COMPONENT in the $APPUSER directory : "
 cd /home/$APPUSER
+rm -rf/home/$APPUSER/$COMPONENT
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
+stat $?
+
+echo -n " Configuring the permissions : "
+mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
+chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
 stat $?
 
