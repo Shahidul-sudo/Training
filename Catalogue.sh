@@ -36,7 +36,7 @@ stat $?
 
 echo -n "Extracting the $COMPONENT in the $APPUSER directory : "
 cd /home/$APPUSER
-rm -rf/home/$APPUSER/$COMPONENT
+rm -rf /home/$APPUSER/$COMPONENT
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat $?
 
