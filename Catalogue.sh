@@ -57,6 +57,6 @@ stat $?
 
 echo -n "Starting the $COMPONENT service : "
 systemctl daemon-reload &>> $LOGFILE
-systemctl enable $COMPONENT &>> $LOGFILE
 systemctl restart $COMPONENT &>> $LOGFILE
+systemctl enable $COMPONENT &>> $LOGFILE
 stat $?
