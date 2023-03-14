@@ -40,8 +40,23 @@ rm -rf /home/$APPUSER/$COMPONENT
 unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat $?
 
-echo -n " Configuring the permissions : "
+echo -n "Configuring the permissions : "
 mv /home/$APPUSER/$COMPONENT-main /home/$APPUSER/$COMPONENT
 chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT
 stat $?
 
+echo -n "Installing the $COMPONENT Application : "
+cd /home/roboshop/$COMPONENT/
+npm install &>> $LOGFILE
+stat $?
+
+echo -n "Updating the systemd file with DB details : "
+sed -i -e  's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/$COMPONENT/systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
+
+echo -n "Starting the $COMPONENT service : "
+systemctl daemon-reload
+systemctl start $COMPONENT
+systemctl enable $COMPONENT
+systemctl status $COMPONENT -l
