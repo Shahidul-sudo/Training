@@ -7,3 +7,13 @@
      ansible.builtin.debug:
        msg: The value of url is {{URL}}
 
+   - name: printing the variables
+     ansible.builtin.debug:
+       msg: The value of url is {{URL}}
+     vars:
+       URL: play yahoo.com
+   - name: printing the variables using only Var
+     ansible.builtin.debug:
+       msg: "{{URL}}"
+     vars:
+       URL: play yahoo.com
