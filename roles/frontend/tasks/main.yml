@@ -1,7 +1,3 @@
-  - name: Demo for Variables
-    vars:
-      URL: play.SHAHID_google.com
-    tasks: 
-    - name: printing the variables
-      ansible.builtin.debug:
-        msg: The value of url is {{URL}}
+  - name: Demo for roles
+    ansible.builtin.debug:
+        msg: The value of Shahid
