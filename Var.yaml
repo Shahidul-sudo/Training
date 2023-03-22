@@ -23,4 +23,4 @@
         msg: "{{CMD_URL}}"
    - name: Printing the value from command line
      ansible.builtin.debug:
-        msg: This Sevrer operating system is {{ansible_distribution}}
+        msg: This Sevrer operating system is {{macaddress}}
