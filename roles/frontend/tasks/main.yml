@@ -1,6 +1,6 @@
   - name: Installing Nginx
     ansible.builtin.package:
-      name: Nginx
+      name: nginx
       state: present
   - name: Download and extract frontend
     ansible.builtin.unarchive:
