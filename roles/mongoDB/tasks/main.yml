@@ -1,0 +1,8 @@
+- name: Copying Roboshop MongoDB proxy file
+  ansible.builtin.copy:
+     src: MongoDB.repo
+     dest: /etc/nginx/default.d/mongo.repo
+- name: Installing MongoDB
+  ansible.builtin.package:
+      name: mongodb-org
+      state: present

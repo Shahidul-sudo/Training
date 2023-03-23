@@ -1,2 +1,5 @@
 [frontend]
 frontend.roboshop.internal
+
+[MongoDB]
+mongodb.roboshop.internal
