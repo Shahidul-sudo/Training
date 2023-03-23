@@ -18,8 +18,9 @@
       remote_src: yes               
   - name: Copying Roboshop Proxy Config 
     ansible.builtin.copy:
-    src: roboshop.conf
-    dest: /etc/nginx/default.d/roboshop.conf
+     src: roboshop.conf
+     dest: /etc/nginx/default.d/roboshop.conf
+
   - name: Restarting nginx
     ansible.builtin.service:
      name: nginx
