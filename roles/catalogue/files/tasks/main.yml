@@ -8,6 +8,20 @@
 
 - name: Creating a user account
   ansible.builtin.user:
-    name: roboshop
+    name: "{{APPUSER}}"
     comment: roboshop user account
   
+- name: Download and extract the component 
+  ansible.builtin.unarchive:
+    src: https://github.com/stans-robot-project/{{COMPONENT}}/archive/main.zip
+    dest: /tmp 
+    remote_src: yes
+- name: Performing frontend cleanup 
+  ansible.builtin.file:
+      path: /home/{{APPUSER}}/catalogue
+      state: absent
+- name: Copying roboshop home directory
+  ansible.builtin.copy:
+      src: /tmp/catalogue-main/
+      dest: /home/{{APPUSER}}/{{COMPONENT}}
+      remote_src: yes  
