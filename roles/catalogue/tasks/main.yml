@@ -27,3 +27,15 @@
       owner: "{{APPUSER}}"
       group: "{{APPUSER}}"
       remote_src: yes  
+
+- name: Copying component Proxy Config 
+  ansible.builtin.copy:
+     src: systemd.service
+     dest: /etc/systemd/system/catalogue.service
+     
+- name: Restarting the service 
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: true
+    enabled: yes
+    name: "{{COMPONENT}}"
