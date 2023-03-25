@@ -28,9 +28,9 @@
       group: "{{APPUSER}}"
       remote_src: yes  
 - name: Generating the node modules
-  commmunity.general.npm:
+  community.general.npm:
      path: /home/{{APPUSER}}/{{COMPONENT}}/
-     
+
 - name: Copying component Proxy Config 
   ansible.builtin.copy:
      src: systemd.service
