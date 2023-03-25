@@ -28,8 +28,8 @@
       group: "{{APPUSER}}"
       remote_src: yes  
 - name: Generating the node modules
-  ansible.builtin.copy:
-     path: /home/{{APPUSER}}/{{COMPONENT}}
+  commmunity.general.npm:
+     path: /home/{{APPUSER}}/{{COMPONENT}}/
      
 - name: Copying component Proxy Config 
   ansible.builtin.copy:
