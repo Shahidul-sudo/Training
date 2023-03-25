@@ -20,7 +20,7 @@
   ansible.builtin.file:
       path: /home/{{APPUSER}}/catalogue
       state: absent
-- name: Copying roboshop home directory
+- name: Copying files roboshop home directory
   ansible.builtin.copy:
       src: /tmp/catalogue-main/
       dest: /home/{{APPUSER}}/{{COMPONENT}}
