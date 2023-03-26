@@ -1,0 +1,44 @@
+- name: Configuring the nodejs repo
+  ansible.builtin.shell: curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash - 
+
+- name: Installing NodeJS
+  ansible.builtin.package:
+    name: nodejs
+    state: present
+
+- name: Creating a user account
+  ansible.builtin.user:
+    name: "{{APPUSER}}"
+    comment: roboshop user account
+  
+- name: Download and extract the component 
+  ansible.builtin.unarchive:
+    src: https://github.com/stans-robot-project/{{COMPONENT}}/archive/main.zip
+    dest: /tmp 
+    remote_src: yes
+- name: Performing frontend cleanup 
+  ansible.builtin.file:
+      path: /home/{{APPUSER}}/{{COMPONENT}}
+      state: absent
+- name: Copying files roboshop home directory
+  ansible.builtin.copy:
+      src: /tmp/{{COMPONENT}}-main/
+      dest: /home/{{APPUSER}}/{{COMPONENT}}
+      owner: "{{APPUSER}}"
+      group: "{{APPUSER}}"
+      remote_src: yes  
+- name: Generating the node modules
+  community.general.npm:
+     path: /home/{{APPUSER}}/{{COMPONENT}}/
+
+- name: Copying component Proxy Config 
+  ansible.builtin.copy:
+     src: systemd.service
+     dest: /etc/systemd/system/{{COMPONENT}}.service
+
+- name: Restarting the service
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: true
+    enabled: yes
+    name: "{{COMPONENT}}"
